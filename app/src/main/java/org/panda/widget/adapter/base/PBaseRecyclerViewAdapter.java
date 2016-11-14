@@ -93,16 +93,16 @@ public abstract class PBaseRecyclerViewAdapter<T> extends RecyclerView.Adapter {
     }
 
     @Override
-    public MLYBaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PBaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View view = layoutInflater.inflate(getItemLayoutID(viewType), parent, false);
-        return new MLYBaseViewHolder(view);
+        return new PBaseViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         try {
-            onBindDataToView((MLYBaseViewHolder) holder, position);
+            onBindDataToView((PBaseViewHolder) holder, position);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -127,10 +127,10 @@ public abstract class PBaseRecyclerViewAdapter<T> extends RecyclerView.Adapter {
     /**
      * 绑定数据到holder里面
      *
-     * @param holder   {@link MLYBaseViewHolder}
+     * @param holder   {@link PBaseViewHolder}
      * @param position itemView的位置
      */
-    protected abstract void onBindDataToView(MLYBaseViewHolder holder, int position);
+    protected abstract void onBindDataToView(PBaseViewHolder holder, int position);
 
     /**
      * 单个itemView里面的某些view的点击事件,可以重写该方法实现操作
@@ -141,12 +141,12 @@ public abstract class PBaseRecyclerViewAdapter<T> extends RecyclerView.Adapter {
     protected void onClickItemView(int position, View view) {
     }
 
-    public class MLYBaseViewHolder extends RecyclerView.ViewHolder {
+    public class PBaseViewHolder extends RecyclerView.ViewHolder {
 
         private final SparseArray<View> mViews;
         private View mItemView;
 
-        public MLYBaseViewHolder(View itemView) {
+        public PBaseViewHolder(View itemView) {
             super(itemView);
             this.mViews = new SparseArray<>();
             this.mItemView = itemView;
